@@ -9,15 +9,12 @@ def obtener_lista_de_palabras(path):
             lista_palabras.append(palabras)
     return lista_palabras
 
-lista_palabras = obtener_lista_de_palabras("Categorias.csv")
 
 def normalizar_datos(lista_palabras:list)->None:
     for palabra in lista_palabras:
         for i in range(len(palabra)):
             palabra[i] = palabra[i].lower()
     return lista_palabras
-
-lista_normalizada = normalizar_datos(lista_palabras)
 
 def crear_diccionario_categorias(lista_palabras):
     diccionario_categorias = {}
@@ -28,9 +25,6 @@ def crear_diccionario_categorias(lista_palabras):
         diccionario_categorias[categorias].append(palabra)
     return diccionario_categorias
 
-diccionario_cat = crear_diccionario_categorias(lista_palabras)
-
-
 def crear_lista_de_elementos(lista_palabras:list,comienzo,final)->list:
     lista_de_elementos = []
     for i in range(comienzo,final):
@@ -38,7 +32,6 @@ def crear_lista_de_elementos(lista_palabras:list,comienzo,final)->list:
             lista_de_elementos.append(lista_palabras[i][1])
     return lista_de_elementos
 
-lista_elementos = crear_lista_de_elementos(lista_palabras,0,16)
 
 def agregar_elementos_a_matriz(lista:list):
     matriz_de_elementos = []

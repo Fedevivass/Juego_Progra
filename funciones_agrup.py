@@ -5,34 +5,8 @@ AMARILLO = "\033[33m"
 AZUL = "\033[34m"
 RESET = "\033[0m"
 
-
-def guarda_puntuacion(nombre, puntos, gano, tiempo):
-    """Guarda la puntuación de un jugador en un archivo JSON con los detalles del juego.
-
-    Args:
-        nombre (str): nombre del jugador
-        puntos (int): Los puntos obtenidos por el jugador.
-        gano (str): Indica si el jugador ganó o no.
-        tiempo (int): El tiempo que tardó el jugador en completar el juego.
-    """
-    
-    datos = {"nombre": nombre, "puntos": puntos, "gano": gano, "tiempo": tiempo}
-    try:
-        with open("puntaje_jugadores.json", "r") as archivo:
-            puntuaciones = json.load(archivo)
-    except (FileNotFoundError):  
-        puntuaciones = []
-    except (json.JSONDecodeError):
-        puntuaciones = []
-    
-    puntuaciones.append(datos)  
-    
-    with open("puntaje_jugadores.json", "w") as archivo:
-        json.dump(puntuaciones, archivo, indent=4) 
-
 def identificar_categoria(lista_palabras_ingresadas: list, lista:list, diccionario_categorias:dict):
     lista_categorias = list(diccionario_categorias)
-    print(lista)
     for i in range(len(lista)):
         if set(lista_palabras_ingresadas) == set(lista[i]):
             return lista_categorias[i]
@@ -111,7 +85,20 @@ def inicializar_matriz(cantidad_filas:int , cantidad_columnas:int, valor_inicial
         matriz += [fila] # le agregue la fila a la matriz 
     return matriz
 
-
+def obtener_categorias_en_uso(diccionario_categorias: dict, categorias_reveladas: set) -> list:
+    """
+    Función que obtiene las categorías activas, excluyendo las que ya han sido reveladas.
+    
+    Parámetros:
+    diccionario_categorias (dict): Diccionario de categorías con palabras.
+    categorias_reveladas (set): Conjunto de categorías ya reveladas o encontradas.
+    
+    Retorna:
+    list: Lista de categorías que están activas (no reveladas).
+    """
+    # Filtrar las categorías que no han sido reveladas
+    categorias_activas = [categoria for categoria in diccionario_categorias if categoria not in categorias_reveladas]
+    return categorias_activas
 
 
 

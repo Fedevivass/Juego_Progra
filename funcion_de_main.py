@@ -45,9 +45,9 @@ Parámetros:
 
     print(f"Bienvenido al nivel {nivel}")
     matriz_desordenada = desordenar_matriz_total(matriz_elementos)
-
+    print(f"{AMARILLO}")
     mostrar_matriz(matriz_desordenada)
-
+    print(f"{RESET}")
     comodines_usados = [False, False, False]
     categoria_adivinada[0] = 0
     empezar = int(time.time())
@@ -56,13 +56,15 @@ Parámetros:
     bandera_return = True
 
     while bandera_return:
+        print("-" * 80)
         lista_palabras_ingresadas = obtener_palabras_ingresadas(4)
 
         categoria = identificar_categoria(lista_palabras_ingresadas, matriz_elementos, diccionario_cat)
         if categoria:
+            categorias_disponibles = obtener_categorias_en_uso(diccionario_cat,categoria)
             categoria_adivinada[0] += 1
             puntos[0] += 10
-            vidas[0] = menu_comodines(diccionario_cat, categoria, comodines_usados, vidas[0])
+            vidas[0] = menu_comodines(diccionario_cat, categoria, comodines_usados, vidas[0],categorias_disponibles)
             print(f"{VERDE}Bien {validacion_nombre}, encontraste {categoria}. Puntos: {puntos[0]}{RESET}")
             print("-" * 80)
         else:
@@ -100,6 +102,8 @@ Parámetros:
             diccionario_cat = crear_diccionario_categorias(lista_palabras)
             lista_elementos = crear_lista_de_elementos(lista_normalizada,32,48)
             matriz_elementos = agregar_elementos_a_matriz(lista_elementos)
+
+
         if categoria_adivinada[0] == 12:
             bandera_return = True
             return bandera_return
