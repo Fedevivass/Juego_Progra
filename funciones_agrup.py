@@ -30,55 +30,6 @@ def guarda_puntuacion(nombre, puntos, gano, tiempo):
     with open("puntaje_jugadores.json", "w") as archivo:
         json.dump(puntuaciones, archivo, indent=4) 
 
-# def identificar_categoria(lista_palabras_ingresadas: list, lista: list, diccionario_categorias: dict):
-#     """summary
-
-#     Args:
-#         lista_palabras_ingresadas (list): Lista de palabras ingresadas por el usuario.
-#         lista (list): Contiene listas de palabras predefinidas.
-#         diccionario_categorias (dict): Diccionario que relaciona categorías con las palabras.
-
-#     Returns:
-#     str: La categoría correspondiente si hay una coincidencia exacta entre las palabras ingresadas y una lista predefinida.
-#     None: Si no hay coincidencia exacta.
-#     """
-    
-#     lista_categorias = list(diccionario_categorias)
-#     resultado = None
-
-#     for i in range(len(lista)):
-#         print(lista[i])
-#         print(lista_palabras_ingresadas)
-#         if set(lista_palabras_ingresadas) == set(lista[i]):
-#             resultado = lista_categorias[i]
-#             break
-
-#     return resultado
-
-# def identificar_categoria(lista_palabras_ingresadas: list, lista: list, diccionario_categorias: dict):
-#     """
-#     Compara la lista de palabras ingresadas por el usuario con las listas predefinidas para encontrar una coincidencia exacta.
-
-#     Args:
-#         lista_palabras_ingresadas (list): Lista de palabras ingresadas por el usuario.
-#         lista (list): Contiene listas de palabras predefinidas.
-#         diccionario_categorias (dict): Diccionario que relaciona categorías con las palabras.
-
-#     Returns:
-#         str: La categoría correspondiente si hay una coincidencia exacta entre las palabras ingresadas y una lista predefinida.
-#         None: Si no hay coincidencia exacta.
-#     """
-#     lista_categorias = list(diccionario_categorias)
-#     resultado = None
-#     print(lista)
-#     for i in range(len(lista)):
-#         print(lista[i])
-#         if set(lista_palabras_ingresadas) == set(lista[i]):
-#             resultado = lista_categorias[i]
-#             break
-
-#     return resultado
-
 def identificar_categoria(lista_palabras_ingresadas: list, lista:list, diccionario_categorias:dict):
     lista_categorias = list(diccionario_categorias)
     print(lista)

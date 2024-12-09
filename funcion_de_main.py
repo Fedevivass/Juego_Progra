@@ -1,4 +1,4 @@
-from Juego_Progra.funciones_de_listas import *
+from funciones_de_listas import *
 from funciones_para_matriz import *
 from funciones_datos_ingresados import *
 from funciones_comodin import*
@@ -44,7 +44,9 @@ Parámetros:
 
 
     print(f"Bienvenido al nivel {nivel}")
-    mostrar_matriz(matriz_elementos)
+    matriz_desordenada = desordenar_matriz_total(matriz_elementos)
+
+    mostrar_matriz(matriz_desordenada)
 
     comodines_usados = [False, False, False]
     categoria_adivinada[0] = 0
@@ -61,7 +63,6 @@ Parámetros:
             categoria_adivinada[0] += 1
             puntos[0] += 10
             vidas[0] = menu_comodines(diccionario_cat, categoria, comodines_usados, vidas[0])
-
             print(f"{VERDE}Bien {validacion_nombre}, encontraste {categoria}. Puntos: {puntos[0]}{RESET}")
             print("-" * 80)
         else:
