@@ -43,6 +43,12 @@ Parámetros:
     matriz_elementos = agregar_elementos_a_matriz(lista_elementos)
 
 
+
+    resultado = identificar_categorias(matriz_elementos,diccionario_cat)
+    print(resultado)
+
+
+
     print(f"Bienvenido al nivel {nivel}")
     matriz_desordenada = desordenar_matriz_total(matriz_elementos)
     print(f"{AMARILLO}")
@@ -59,13 +65,12 @@ Parámetros:
         print("-" * 80)
         lista_palabras_ingresadas = obtener_palabras_ingresadas(4)
 
-        categoria = identificar_categoria(lista_palabras_ingresadas, matriz_elementos, diccionario_cat)
-        if categoria:
-            categorias_disponibles = obtener_categorias_en_uso(diccionario_cat,categoria)
+        categoria_encontrada = identificar_categoria(lista_palabras_ingresadas, matriz_elementos, diccionario_cat)
+        if categoria_encontrada:
             categoria_adivinada[0] += 1
             puntos[0] += 10
-            vidas[0] = menu_comodines(diccionario_cat, categoria, comodines_usados, vidas[0],categorias_disponibles)
-            print(f"{VERDE}Bien {validacion_nombre}, encontraste {categoria}. Puntos: {puntos[0]}{RESET}")
+            vidas[0] = menu_comodines(diccionario_cat, categoria_encontrada, comodines_usados, vidas[0])
+            print(f"{VERDE}Bien {validacion_nombre}, encontraste {categoria_encontrada}. Puntos: {puntos[0]}{RESET}")
             print("-" * 80)
         else:
             vidas[0] -= 1
